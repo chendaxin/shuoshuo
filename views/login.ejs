@@ -1,0 +1,30 @@
+<% include header.ejs %>
+<div class="container lo">
+    <div class="row col-lg-6">
+        <h1>欢迎登录</h1>
+        <form class="z-form">
+            <div class="form-group">
+                <label for="username">用户名</label>
+                <input type="text" class="form-control" id="username" placeholder="用户名">
+            </div>
+            <div class="form-group">
+                <label for="password">密码</label>
+                <input type="password" class="form-control" id="password" placeholder="密码至少六位">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputFile">File input</label>
+                <input type="file" id="exampleInputFile">
+                <p class="help-block">Example block-level help text here.</p>
+            </div>
+            <button type="button" id="denglu" class="btn btn-default">登录</button>
+        </form>
+        <div class="alert alert-success" role="alert">登录成功！&nbsp;&nbsp;&nbsp;<a href="/">进入首页</a></div>
+        <div class="alert alert-warning" role="alert">用户名不存在！</div>
+        <div class="alert alert-info" role="alert">服务器发生错误！</div>
+        <div class="alert alert-danger" role="alert">用户密码错误！</div>
+        <%if(!login){%>
+            <div class="alert alert-warning visible" role="alert">请先登录！</div>
+        <%}%>
+    </div>
+</div>
+<% include footer.ejs %>

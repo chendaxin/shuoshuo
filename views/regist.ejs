@@ -1,71 +1,5 @@
-
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>注册 - 班级说说</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/css/jumbotron.css" rel="stylesheet">
-    <style>
-        body {
-            padding-top: 80px;
-        }
-        .alert {
-            display: none;;
-        }
-        .z-form {
-            margin-bottom: 10px;
-        }
-    </style>
-</head>
-
-<body>
-
-<nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">班级说说</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li><a href="#">全部说说 <span class="sr-only">(current)</span></a></li>
-                <li><a href="#">我的说说</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">Separated link</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">One more separated link</a></li>
-                    </ul>
-                </li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="#">注册</a></li>
-                <li><a href="#">登录</a></li>
-            </ul>
-        </div><!--/.navbar-collapse -->
-    </div>
-</nav>
-
-<div class="container">
+<% include header.ejs %>
+<div class="container re">
     <div class="row col-lg-6">
         <h1>欢迎注册</h1>
         <form class="z-form">
@@ -89,35 +23,9 @@
             </div>
             <button type="button" id="zhuce" class="btn btn-default">注册</button>
         </form>
-        <div class="alert alert-success" role="alert">注册成功！</div>
+        <div class="alert alert-success" role="alert">注册成功！&nbsp;&nbsp;&nbsp;<a href="/">直接登录</a></div>
         <div class="alert alert-warning" role="alert">用户名已存在！</div>
         <div class="alert alert-danger" role="alert">服务器内部发生错误！</div>
     </div>
 </div>
-<script src="/js/jquery-1.11.3.min.js"></script>
-<script src="/js/bootstrap.min.js"></script>
-<script type="text/javascript">
-
-    $('#zhuce').click(function(){
-        $.post('/doregist', {
-            "username": $('#username').val(),
-            "password": $('#password').val()
-        }, function(result){
-            if (result == "1"){
-                //注册成功
-                $('.alert-success').fadeIn(300);
-            } else if(result == "-1"){
-                //用户名被占用
-                $('.alert-warning').fadeIn(300);
-            } else {
-                //未知错误
-                $('.alert-danger').fadeIn(300);
-            }
-        });
-    });
-    $('body').click(function(){
-        $('.alert').fadeOut(300);
-    })
-</script>
-</body>
-</html>
+<% include footer.ejs %>

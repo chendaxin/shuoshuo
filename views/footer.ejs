@@ -1,0 +1,68 @@
+<script src="/js/jquery-1.11.3.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/jquery.Jcrop.js"></script>
+<script src="/js/xiaoguo.js"></script>
+<script type="text/javascript">
+
+    $('#denglu').click(function(){
+        $.post('/dologin', {
+            "username": $('#username').val(),
+            "password": $('#password').val()
+        }, function(result){
+            if (result == "1"){
+                //登录成功
+                $('.lo .alert-success').fadeIn(300);
+            } else if(result == "-1"){
+                //用户名不存在
+                $('.lo .alert-warning').fadeIn(300);
+            } else if(result == "-3"){
+                //服务器错误
+                $('.lo .alert-info').fadeIn(300);
+            }
+            else {
+                //密码错误
+                $('.alert-danger').fadeIn(300);
+            }
+        });
+    });
+    $('#zhuce').click(function(){
+        $.post('/doregist', {
+            "username": $('#username').val(),
+            "password": $('#password').val()
+        }, function(result){
+            if (result == "1"){
+                //注册成功
+                $('.re .alert-success').fadeIn(300);
+            } else if(result == "-1"){
+                //用户名被占用
+                $('.re .alert-warning').fadeIn(300);
+            } else {
+                //未知错误
+                $('.re .alert-danger').fadeIn(300);
+            }
+        });
+    });
+    $(".jianqie").click(function () {
+        var w = parseInt($(".jcrop-holder>div:first").css("width"));
+        var h = parseInt($(".jcrop-holder>div:first").css("height"));
+        var x = parseInt($(".jcrop-holder>div:first").css("left"));
+        var y = parseInt($(".jcrop-holder>div:first").css("top"));
+
+        $.get("/docut",{
+            "w" : w,
+            "h" : h,
+            "x" : x,
+            "y" : y
+        },function(result){
+            if (result == "1"){
+                alert("剪切成功");
+                window.location = "/";
+            }
+        });
+    });
+    $('body').click(function(){
+        $('.alert').fadeOut(300);
+    })
+</script>
+</body>
+</html>

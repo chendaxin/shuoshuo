@@ -1,0 +1,12 @@
+body {
+    padding-top: 80px;
+}
+.lo .alert, .re .alert {
+    display: none;;
+}
+.lo .visible {
+    display: block;
+}
+.z-form {
+    margin-bottom: 10px;
+}

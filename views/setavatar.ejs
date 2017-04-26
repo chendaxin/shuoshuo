@@ -1,0 +1,20 @@
+<% include header.ejs %>
+<div class="container">
+    <div class="row col-lg-6">
+        <h1>上传头像</h1>
+        <form method="post" action="/dosetavatar" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="username">选择头像</label>
+                <input type="file" class="form-control" id="touxiang" name="touxiang">
+            </div>
+            <button type="submit" id="shangchuan" class="btn btn-default">上传</button>
+        </form>
+        <% if(alert == "1"){ %>
+            <div class="alert alert-success"role="alert">图片上传成功！&nbsp;&nbsp;&nbsp;<a href="/cut">剪切头像</a></div>
+        <% } %>
+            <% if(alert == "-1"){ %>
+        <div class="alert alert-danger" role="alert">图片上传失败！</div>
+        <% } %>
+    </div>
+</div>
+<% include footer.ejs %>
